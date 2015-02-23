@@ -10,51 +10,65 @@
 #include <fstream>
 #include <iostream>
 #include <iomanip>
+#include <string>
 
 using namespace std;
 
-int main () {
+cout << "\n"
+	"I was able to compile this code using the HPC at the University of Memphis. When I compiled it there, "
+	"it did not produce any warning message. The HPC uses a GNU C++ compiler that can be considered a good "
+	"up-to-date standard. I also version-controlled this code using git, and used a remote repository hosted "
+	"by github. If I can do this, so can you!!!" << "\n";
+cout << "\n"
+	"I am so cool that I was also able to write a code that produces the first M numbers of the Fibonacci sequence. Here they are:" << "\n";
+cout << endl;
 
-    string inputfilename, outputfilename, errorfilename;
-    ifstream inputfile;
-    ofstream outputfile;
-    ofstream errorfile;
+// declaring functions
+// void function to open the input and output files
 
-	cout << "\n"
-		"I was able to compile this code using the HPC at the University of Memphis. When I compiled it there, "
-		"it did not produce any warning message. The HPC uses a GNU C++ compiler that can be considered a good "
-		"up-to-date standard. I also version-controlled this code using git, and used a remote repository hosted "
-		"by github. If I can do this, so can you!!!" << "\n";
-	cout << "\n"
-		"I am so cool that I was also able to write a code that produces the first M numbers of the Fibonacci sequence. Here they are:" << "\n";
-	cout << endl;
+void open_input(ifstream & inputfile, string inputfilename);
+void open_output(ofstream & outputfile, string outputfilename);
+void open_errorfile(ofstream & errorfile, string errorfilename);
 
-	// prompt the user for an inputfile
+// void functions to print results in the the output and error files 
 
-	cout << "Enter inputfilename:";
-	cin >> inputfilename;
+void print_output(ofstream outfutfile, long long Fibonacci_Table) {
+    outputfile << Fibonacci_Table;
+}
 
-	// creating output and error files
+void print_error(ofstream errorfile, string & statement) {
+    errorfile << "N is not valid";
+}
 
-	outputfile.open("golnaz.txt");
-	errorfile.open("golnaz.err");
+// void functions to print the results and errors on the terminal
 
-	// sanity check for the inputfile
+void printerror_terminal(ofstream & statement);
+void printout_terminal(ofstream & results);
 
-	inputfile.open(inputfilename.c_str());
-	if ( !inputfilename.is_open() ) {
-		cout << "cannot open input file:"
-			<< inputfilename
-			<< endl;
+int main() {
+
+    // declare variables within the main
+
+	string inputfilename, outputfilename, errorfilename;
+	ifstream inputfile;
+	ofstream outputfile;
+	ofstream errorfile;
+    long long N, long long M, first_number = 0, second_number = 1, fibseries = 0;
+    int i;
+
+    void open_input(ifstream & inputfile, string inputfilename) {
+        inputfile.open(golnaz.in);
+		// sanity check for the inputfile
+		if ( !inputfile ) {
+            void print_error(ofstream errorfile, string errorfilename) {
+
 		return 1;
 	}
 
-	// initializing the variables
-
-	int i;
-	long long N, long long M, first_number = 0, second_number = 1, fibseries = 0;
 	inputfile >> N;
 	if (N < 1) {
+
+
 		cerr << "N is not valid" << "\n";
 		errorfile << "N is not valid" << "\n";
 	} else { 
@@ -67,8 +81,8 @@ int main () {
 				first_number = second_number;
 				second_number = fibseries;
 			}
-			cout << fibseries
-				outputfile << fibseries <<
+			cout << fibseries;
+			outputfile << fibseries <<
 
 
 				return 0;
