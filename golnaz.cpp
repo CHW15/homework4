@@ -5,6 +5,7 @@
 * The repository address is: https://github.com/Golnaz15/HW4_hpc_git_code
 
 * This progrem checks the access into the necessary computer resources
+* and prints the Fibonacci sequence in an output tabel and terminal
 */
 
 #include <iostream>
@@ -16,30 +17,33 @@
 
 using namespace std;
 
-// Declaring functions:
+// Declare functions:
 
 // void functions to open the input and output files
 
-void open_input(ifstream & inputfile, string inputfilename) {
+void open_input(ifstream &inputfile, string inputfilename) {
     inputfile.open(inputfilename);
 	}
 
-void open_output(ofstream & outputfile, string outputfilename) {
+void open_output(ofstream &outputfile, string outputfilename) {
     outputfile.open(outputfilename);
 }
 
-void open_errorfile(ofstream & errorfile, string errorfilename) {
+void open_errorfile(ofstream &errorfile, string errorfilename) {
     errorfile.open(errorfilename);
 }
 
-// void functions for printing the results into the output file and terminal
+// function for printing the results into the output file and terminal
 
-void print_output(ofstream outputfile, ofstream & stream, long long Fibonacci_Table) {
-    outputfile << Fibonacci_Table;
-    stream << Fibonacci_Table;
+void print_output(ofstream outputfile, ofstream &stream, long long Fibonacci_Table, int &position, ostringstream stew) {
+    outputfile << stew (20) << right << Fibonacci_Table;
+		if (position/10 = 0) {
+            outputfile << "\n";
+		} 
+		stream << stew (20) << right << Fibonacci_Table << "\n";
 }
 
-// void function for printing the errors into the error file and terminal
+// function for printing the errors into the error file and terminal
 
 void print_error(ofstream & errorfile, ostream & stream, string statement) {
     errorfile << statement;
@@ -67,10 +71,10 @@ int main() {
 	ofstream outputfile;
 	ofstream errorfile;
     long long N, long long M, first_number = 0, second_number = 1, fibseries = 0;
-    int i;
+    int i, sequence_index = 0;
 
-    // Calling the functions:
-    // generating the related files
+    // Call the functions:
+    // generate the related files
 
     open_input(inputfile, "golnaz.in");
     open_output(outputfile, "golnaz.out");
@@ -89,17 +93,20 @@ int main() {
             print_error(errorfile, cout, "N is not valid");
 		} else { 
 		M = 10*N;
-		for ( i = 0 ; i < N ; i++ ) {
+		for ( i = 0 ; i < M ; i++ ) {
 			if ( i = 1) {
 				fibseries = i;
 			} else {
 				fibseries = first_number + second_number;
 				first_number = second_number;
 				second_number = fibseries;
-			}
-			cout << fibseries;
-			outputfile << fibseries <<
+                sequence_index++;
+                if (sequence_index/10 = 0)
+                print_output(outputfile, cout, fibseries);
 
+
+			}
+        
 
 				return 0;
 		}
