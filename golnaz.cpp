@@ -23,31 +23,48 @@ cout << "\n"
 	"I am so cool that I was also able to write a code that produces the first M numbers of the Fibonacci sequence. Here they are:" << "\n";
 cout << endl;
 
-// declaring functions
-// void function to open the input and output files
+// Declaring functions:
 
-void open_input(ifstream & inputfile, int tot_fib_num);
-void open_output(ofstream & outputfile, int fib_series);
-void open_errorfile(ofstream & errorfile, string error_statement);
+// void functions to open the input and output files
+
+void open_input(ifstream & inputfile, string inputfilename) {
+    inputfile.open(inputfilename);
+	}
+
+void open_output(ofstream & outputfile, string outputfilename) {
+    outputfile.open(outputfilename);
+}
+
+void open_errorfile(ofstream & errorfile, string errorfilename) {
+    errorfile.open(errorfilename);
+}
+
 
 // void functions to print results in the the output and error files 
 
-void print_output(ofstream outfutfile, long long Fibonacci_Table) {
+void print_output(ofstream outputfile, long long Fibonacci_Table) {
     outputfile << Fibonacci_Table;
 }
 
-void print_error(ofstream errorfile, string & statement) {
+void print_error(ofstream errorfile, string statement) {
     errorfile << "N is not valid";
 }
 
+
 // void functions to print the results and errors on the terminal
 
-void printerror_terminal(ofstream & statement);
-void printout_terminal(ofstream & results);
+void printout_terminal(ofstream & stream, long long Fibonacci_Table) {
+    stream << Fibonacci_Table;
+}
+void printerror_terminal(ofstream & stream, string statement) {
+    stream << "N is not valid";
+}
+
+
 
 int main() {
 
-    // declare variables within the main
+    // Declare variables within the main
 
 	string inputfilename, outputfilename, errorfilename;
 	ifstream inputfile;
