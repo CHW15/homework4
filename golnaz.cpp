@@ -2,16 +2,17 @@
 * Program Tools Course - HW4
 * by Golnaz Sarram
 * February 22th, 2015
+* The repository address is: https://github.com/Golnaz15/HW4_hpc_git_code
 
 * This progrem checks the access into the necessary computer resources
 */
 
 #include <iostream>
 #include <fstream>
-#include <iostream>
 #include <iomanip>
 #include <string>
 #include <sstream>
+#include <ostream>
 
 using namespace std;
 
@@ -40,7 +41,7 @@ void print_output(ofstream outputfile, ofstream & stream, long long Fibonacci_Ta
 
 // void function for printing the errors into the error file and terminal
 
-void print_error(ofstream errorfile, ofstream & stream, string statement) {
+void print_error(ofstream & errorfile, ostream & stream, string statement) {
     errorfile << statement;
     stream << statement;
 }
@@ -78,23 +79,15 @@ int main() {
 	// sanity check for the inputfile
 	
 	if ( !inputfile ) {
-        print_error(errorfile, cout, "N is not valid");
-	}
-
+        print_error(errorfile, cout, "input cannot be open");
+	} else {
 		inputfile >> N;
 		
-        // checking if N is valid
+        // check if N is valid
 
 		if (N < 1) {
-			
-            // openning the outputfile
-
-			void open_errorfile(ofstream & errorfile, string golnaz.err);
-			errorfile.open("golnaz.err");
-        
-		cerr << "N is not valid" << "\n";
-		errorfile << "N is not valid" << "\n";
-	} else { 
+            print_error(errorfile, cout, "N is not valid");
+		} else { 
 		M = 10*N;
 		for ( i = 0 ; i < N ; i++ ) {
 			if ( i = 1) {
