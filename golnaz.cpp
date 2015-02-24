@@ -14,6 +14,7 @@
 #include <string>
 #include <sstream>
 #include <ostream>
+#include <istream>
 
 using namespace std;
 
@@ -33,21 +34,22 @@ void open_errorfile(ofstream &errorfile, string errorfilename) {
     errorfile.open(errorfilename);
 }
 
-// function for printing the results into the output file and terminal
+// function for printing the results into the output/errors into files and terminal
 
-void print_output(ofstream outputfile, ofstream &stream, long long Fibonacci_Table, int &position, ostringstream stew) {
-    outputfile << stew (20) << right << Fibonacci_Table;
-		if (position/10 = 0) {
-            outputfile << "\n";
-		} 
-		stream << stew (20) << right << Fibonacci_Table << "\n";
-}
-
-// function for printing the errors into the error file and terminal
-
-void print_error(ofstream & errorfile, ostream & stream, string statement) {
-    errorfile << statement;
-    stream << statement;
+void print_output(ofstream outputfile, ofstream errorfile, ofstream &stream, long long & Fibonacci_Table, int & position, string statement) {
+    outputfile << setw (20) << right << Fibonacci_Table;
+	if ( position % 10 == 0 ) {
+		outputfile << "\n";
+	}
+	
+	stream << setw (20) << right << Fibonacci_Table;
+	if ( position % 10 == 0 ) {
+		stream << "\n";
+	}
+	
+	errorfile << statement << "\n";
+    stream << statement << "\n";
+    return;
 }
 
 
@@ -82,8 +84,8 @@ int main() {
 	
 	// sanity check for the inputfile
 	
-	if ( !inputfile ) {
-        print_error(errorfile, cout, "input cannot be open");
+	if ( !inputfile || !outputfile || !errorfile ) {
+        print_output(outputfile, errorfile, cout, fibseries, sequence_index, "input cannot be open");
 	} else {
 		inputfile >> N;
 		
