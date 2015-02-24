@@ -41,8 +41,8 @@ void print_output(ofstream outputfile, ofstream & stream, long long Fibonacci_Ta
 // void function for printing the errors into the error file and terminal
 
 void print_error(ofstream errorfile, ofstream & stream, string statement) {
-    errorfile << "N is not valid";
-    stream << "N is not valid";
+    errorfile << statement;
+    stream << statement;
 }
 
 
@@ -68,20 +68,18 @@ int main() {
     long long N, long long M, first_number = 0, second_number = 1, fibseries = 0;
     int i;
 
-    void open_input(inputfile, N) {
-		inputfile.open(golnaz.in);
-	}
+    // Calling the functions:
+    // generating the related files
+
+    open_input(inputfile, "golnaz.in");
+    open_output(outputfile, "golnaz.out");
+    open_errorfile(errorfile, "golnaz.err");
 	
 	// sanity check for the inputfile
 	
 	if ( !inputfile ) {
-		void printout_terminal(ofstream & results) {
-			cout << "Cannot open input file golnaz.in"
-				<< endl;
-			return false;
-		}
+        print_error(errorfile, cout, "N is not valid");
 	}
-	return false;
 
 		inputfile >> N;
 		
