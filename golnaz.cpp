@@ -11,17 +11,9 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <sstream>
 
 using namespace std;
-
-cout << "\n"
-	"I was able to compile this code using the HPC at the University of Memphis. When I compiled it there, "
-	"it did not produce any warning message. The HPC uses a GNU C++ compiler that can be considered a good "
-	"up-to-date standard. I also version-controlled this code using git, and used a remote repository hosted "
-	"by github. If I can do this, so can you!!!" << "\n";
-cout << "\n"
-	"I am so cool that I was also able to write a code that produces the first M numbers of the Fibonacci sequence. Here they are:" << "\n";
-cout << endl;
 
 // Declaring functions:
 
@@ -39,30 +31,33 @@ void open_errorfile(ofstream & errorfile, string errorfilename) {
     errorfile.open(errorfilename);
 }
 
+// void functions for printing the results into the output file and terminal
 
-// void functions to print results in the the output and error files 
-
-void print_output(ofstream outputfile, long long Fibonacci_Table) {
+void print_output(ofstream outputfile, ofstream & stream, long long Fibonacci_Table) {
     outputfile << Fibonacci_Table;
-}
-
-void print_error(ofstream errorfile, string statement) {
-    errorfile << "N is not valid";
-}
-
-
-// void functions to print the results and errors on the terminal
-
-void printout_terminal(ofstream & stream, long long Fibonacci_Table) {
     stream << Fibonacci_Table;
 }
-void printerror_terminal(ofstream & stream, string statement) {
+
+// void function for printing the errors into the error file and terminal
+
+void print_error(ofstream errorfile, ofstream & stream, string statement) {
+    errorfile << "N is not valid";
     stream << "N is not valid";
 }
 
 
-
 int main() {
+
+    // The first tasks of the homework
+	
+	cout << "\n"
+		"I was able to compile this code using the HPC at the University of Memphis. When I compiled it there, "
+		"it did not produce any warning message. The HPC uses a GNU C++ compiler that can be considered a good "
+		"up-to-date standard. I also version-controlled this code using git, and used a remote repository hosted "
+		"by github. If I can do this, so can you!!!" << "\n";
+	cout << "\n"
+		"I am so cool that I was also able to write a code that produces the first M numbers of the Fibonacci sequence. Here they are:" << "\n";
+	cout << endl;
 
     // Declare variables within the main
 
