@@ -26,9 +26,9 @@ cout << endl;
 // declaring functions
 // void function to open the input and output files
 
-void open_input(ifstream & inputfile, string inputfilename);
-void open_output(ofstream & outputfile, string outputfilename);
-void open_errorfile(ofstream & errorfile, string errorfilename);
+void open_input(ifstream & inputfile, int tot_fib_num);
+void open_output(ofstream & outputfile, int fib_series);
+void open_errorfile(ofstream & errorfile, string error_statement);
 
 // void functions to print results in the the output and error files 
 
@@ -56,19 +56,32 @@ int main() {
     long long N, long long M, first_number = 0, second_number = 1, fibseries = 0;
     int i;
 
-    void open_input(ifstream & inputfile, string inputfilename) {
-        inputfile.open(golnaz.in);
-		// sanity check for the inputfile
-		if ( !inputfile ) {
-            void print_error(ofstream errorfile, string errorfilename) {
-
-		return 1;
+    void open_input(inputfile, N) {
+		inputfile.open(golnaz.in);
 	}
+	
+	// sanity check for the inputfile
+	
+	if ( !inputfile ) {
+		void printout_terminal(ofstream & results) {
+			cout << "Cannot open input file golnaz.in"
+				<< endl;
+			return false;
+		}
+	}
+	return false;
 
-	inputfile >> N;
-	if (N < 1) {
+		inputfile >> N;
+		
+        // checking if N is valid
 
+		if (N < 1) {
+			
+            // openning the outputfile
 
+			void open_errorfile(ofstream & errorfile, string golnaz.err);
+			errorfile.open("golnaz.err");
+        
 		cerr << "N is not valid" << "\n";
 		errorfile << "N is not valid" << "\n";
 	} else { 
